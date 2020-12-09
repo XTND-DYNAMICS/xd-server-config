@@ -1,0 +1,24 @@
+{
+  "name": "@xtnd-dynamics/xd-server-config",
+  "version": "0.0.0",
+  "description": "XTND DYNAMICS Configuration System",
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.0",
+    "@types/lodash": "^4.14.165",
+    "@types/node": "^14.14.11",
+    "typescript": "^4.1.2"
+  }
+}
