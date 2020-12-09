@@ -1,6 +1,6 @@
 {
   "name": "@xtnd-dynamics/xd-server-config",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "XTND DYNAMICS Server Configuration System",
   "engines": {
     "node": "14.x",
