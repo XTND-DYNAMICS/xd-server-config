@@ -1,1 +1,2 @@
-xd-server-config
+# XD-SERVER-CONFIG
+XTND DYNAMICS Server Configuration System

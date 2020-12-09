@@ -2,30 +2,33 @@ import path from 'path';
 import _ from 'lodash';
 
 
-export interface ConfigurationLoaderOptions {
-    dirname: string;
-    basePath: string;
-    namespace: string
+export interface ServerConfigurationLoaderOptions {
+    dirname?: string;
+    basePath?: string;
+    namespace?: string
 }
 
 export interface ConfigurationOptions {
 }
 
-export class ConfigurationLoader {
+export class ServerConfigurationLoader {
 
-    constructor(public options: ConfigurationLoaderOptions) {
+    constructor(public options?: Partial<ServerConfigurationLoaderOptions>) {
     }
 
-    load(): Promise<ConfigurationOptions> {
+    load(options?: Partial<ServerConfigurationLoaderOptions>): ConfigurationOptions {
 
-        const optionsDir: string = path.join(this.options.dirname, '');
+        options = _.assign({}, this.options, options);
 
-        const optionsBaseFilePath: string = path.join(optionsDir, this.options.namespace);
+        const optionsDir: string = path.join(<string>options.dirname, <string>options.basePath);
+
+        const optionsBaseFilePath: string = path.join(optionsDir, <string>options.namespace);
         const optionsBase = require(optionsBaseFilePath);
         const optionsEnvFilePath: string = path.join(optionsBaseFilePath + '.' + process.env.NODE_ENV);
         const optionsEnv = require(optionsEnvFilePath);
-        const options = _.merge({}, optionsBase, optionsEnv);
 
-        return Promise.resolve(options);
+        const result = _.merge({}, optionsBase, optionsEnv);
+
+        return result;
     }
 }
